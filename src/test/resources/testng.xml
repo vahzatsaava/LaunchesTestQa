@@ -1,0 +1,8 @@
+<suite name="ParallelSuite" parallel="tests" thread-count="3">
+    <test name="UITests">
+        <classes>
+            <class name="framework.tests.ui.LaunchesTests"/>
+            <class name="framework.tests.ui.LoginTests"/>
+        </classes>
+    </test>
+</suite>
