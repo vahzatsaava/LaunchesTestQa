@@ -2,32 +2,40 @@
 <testng-results ignored="0" total="6" passed="6" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2025-11-24T11:01:27 GET" name="Command line suite" finished-at="2025-11-24T11:01:35 GET" duration-ms="8275">
+  <suite started-at="2025-12-03T15:07:54 GET" name="Command line suite" finished-at="2025-12-03T15:08:03 GET" duration-ms="8532">
     <groups>
     </groups>
-    <test started-at="2025-11-24T11:01:27 GET" name="Command line test" finished-at="2025-11-24T11:01:35 GET" duration-ms="8275">
+    <test started-at="2025-12-03T15:07:54 GET" name="Command line test" finished-at="2025-12-03T15:08:03 GET" duration-ms="8532">
       <class name="framework.tests.api.LaunchesApiTest">
-        <test-method signature="createClusterTest()[pri:0, instance:framework.tests.api.LaunchesApiTest@15f47664]" started-at="2025-11-24T11:01:27 GET" name="createClusterTest" finished-at="2025-11-24T11:01:30 GET" duration-ms="3220" status="PASS">
+        <test-method is-config="true" signature="setUpApi()[pri:0, instance:framework.tests.api.LaunchesApiTest@5505ae1a]" started-at="2025-12-03T15:07:54 GET" name="setUpApi" finished-at="2025-12-03T15:07:55 GET" duration-ms="755" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUpApi -->
+        <test-method is-config="true" signature="initApi()[pri:0, instance:framework.tests.api.LaunchesApiTest@5505ae1a]" started-at="2025-12-03T15:07:55 GET" name="initApi" finished-at="2025-12-03T15:07:55 GET" duration-ms="235" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- initApi -->
+        <test-method signature="createClusterTest()[pri:0, instance:framework.tests.api.LaunchesApiTest@5505ae1a]" started-at="2025-12-03T15:07:55 GET" name="createClusterTest" description="Создание кластера" finished-at="2025-12-03T15:07:58 GET" duration-ms="2504" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- createClusterTest -->
-        <test-method signature="deleteLaunch()[pri:0, instance:framework.tests.api.LaunchesApiTest@15f47664]" started-at="2025-11-24T11:01:30 GET" name="deleteLaunch" finished-at="2025-11-24T11:01:31 GET" duration-ms="691" status="PASS">
+        <test-method signature="deleteLaunch()[pri:0, instance:framework.tests.api.LaunchesApiTest@5505ae1a]" started-at="2025-12-03T15:07:58 GET" name="deleteLaunch" description="Удаление запуска" finished-at="2025-12-03T15:07:58 GET" duration-ms="659" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- deleteLaunch -->
-        <test-method signature="getLaunchByIdTest()[pri:0, instance:framework.tests.api.LaunchesApiTest@15f47664]" started-at="2025-11-24T11:01:31 GET" name="getLaunchByIdTest" finished-at="2025-11-24T11:01:32 GET" duration-ms="1552" status="PASS">
+        <test-method signature="getLaunchByIdTest()[pri:0, instance:framework.tests.api.LaunchesApiTest@5505ae1a]" started-at="2025-12-03T15:07:58 GET" name="getLaunchByIdTest" description="Получение запуска по UUID" finished-at="2025-12-03T15:07:59 GET" duration-ms="1073" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- getLaunchByIdTest -->
-        <test-method signature="getLaunchReportTest()[pri:0, instance:framework.tests.api.LaunchesApiTest@15f47664]" started-at="2025-11-24T11:01:32 GET" name="getLaunchReportTest" finished-at="2025-11-24T11:01:34 GET" duration-ms="1937" status="PASS">
+        <test-method signature="getLaunchReportTest()[pri:0, instance:framework.tests.api.LaunchesApiTest@5505ae1a]" started-at="2025-12-03T15:07:59 GET" name="getLaunchReportTest" description="Получение отчёта запуска" finished-at="2025-12-03T15:08:02 GET" duration-ms="2143" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- getLaunchReportTest -->
-        <test-method signature="getLaunchesTest()[pri:0, instance:framework.tests.api.LaunchesApiTest@15f47664]" started-at="2025-11-24T11:01:34 GET" name="getLaunchesTest" finished-at="2025-11-24T11:01:34 GET" duration-ms="268" status="PASS">
+        <test-method signature="getLaunchesTest()[pri:0, instance:framework.tests.api.LaunchesApiTest@5505ae1a]" started-at="2025-12-03T15:08:02 GET" name="getLaunchesTest" description="Получение списка запусков" finished-at="2025-12-03T15:08:02 GET" duration-ms="262" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- getLaunchesTest -->
-        <test-method signature="updateLaunchInfoTest()[pri:0, instance:framework.tests.api.LaunchesApiTest@15f47664]" started-at="2025-11-24T11:01:34 GET" name="updateLaunchInfoTest" finished-at="2025-11-24T11:01:35 GET" duration-ms="528" status="PASS">
+        <test-method signature="updateLaunchInfoTest()[pri:0, instance:framework.tests.api.LaunchesApiTest@5505ae1a]" started-at="2025-12-03T15:08:02 GET" name="updateLaunchInfoTest" description="Обновление данных запуска" finished-at="2025-12-03T15:08:03 GET" duration-ms="726" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- updateLaunchInfoTest -->

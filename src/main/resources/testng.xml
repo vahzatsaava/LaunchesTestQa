@@ -2,7 +2,7 @@
     <test name="UITests">
         <classes>
             <class name="framework.tests.ui.LaunchesTests"/>
-            <class name="framework.tests.ui.LoginTests"/>
+            <class name="framework.tests.ui.LoginUtils"/>
             <class name="framework.tests.api.LaunchesApiTest"/>
         </classes>
     </test>

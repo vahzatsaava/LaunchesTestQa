@@ -1,0 +1,7 @@
+framework\tests\api\LaunchesApiTest.class
+framework\tests\api\BaseApiTest.class
+framework\tests\ui\LoginUtils.class
+framework\tests\api\LaunchInfoRequestBuilder.class
+framework\tests\api\LaunchesApiUtils.class
+framework\tests\BaseTest.class
+framework\tests\ui\LaunchesTests.class

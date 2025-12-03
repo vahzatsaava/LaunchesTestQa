@@ -3,6 +3,7 @@
         <classes>
             <class name="framework.tests.ui.LaunchesTests"/>
             <class name="framework.tests.ui.LoginTests"/>
+            <class name="framework.tests.api.LaunchesApiTest"/>
         </classes>
     </test>
 </suite>

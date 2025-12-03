@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="6" failures="0" name="TestSuite" time="8.189" errors="0" skipped="0">
+<testsuite tests="6" failures="0" name="TestSuite" time="7.465" errors="0" skipped="0">
   <properties>
     <property name="idea.version" value="2021.3"/>
     <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
@@ -61,10 +61,10 @@
     <property name="java.vendor.version" value="Corretto-17.0.4.9.1"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase classname="framework.tests.api.LaunchesApiTest" name="createClusterTest" time="3.22"/>
-  <testcase classname="framework.tests.api.LaunchesApiTest" name="deleteLaunch" time="0.691"/>
-  <testcase classname="framework.tests.api.LaunchesApiTest" name="getLaunchByIdTest" time="1.552"/>
-  <testcase classname="framework.tests.api.LaunchesApiTest" name="getLaunchReportTest" time="1.966"/>
-  <testcase classname="framework.tests.api.LaunchesApiTest" name="getLaunchesTest" time="0.232"/>
-  <testcase classname="framework.tests.api.LaunchesApiTest" name="updateLaunchInfoTest" time="0.528"/>
+  <testcase classname="framework.tests.api.LaunchesApiTest" name="createClusterTest" time="2.591"/>
+  <testcase classname="framework.tests.api.LaunchesApiTest" name="deleteLaunch" time="0.661"/>
+  <testcase classname="framework.tests.api.LaunchesApiTest" name="getLaunchByIdTest" time="1.076"/>
+  <testcase classname="framework.tests.api.LaunchesApiTest" name="getLaunchReportTest" time="2.145"/>
+  <testcase classname="framework.tests.api.LaunchesApiTest" name="getLaunchesTest" time="0.265"/>
+  <testcase classname="framework.tests.api.LaunchesApiTest" name="updateLaunchInfoTest" time="0.727"/>
 </testsuite>
