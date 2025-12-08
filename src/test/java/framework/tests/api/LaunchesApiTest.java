@@ -1,6 +1,8 @@
 package framework.tests.api;
 
+import framework.core.base_entities.BaseApiTest;
 import framework.core.model.LaunchDto;
+import framework.core.steps.LaunchesApiSteps;
 import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Severity;
@@ -12,13 +14,13 @@ import java.util.List;
 
 @Epic("API Tests")
 @Feature("Launches API")
-public class LaunchesApiTest extends BaseApiTest{
+public class LaunchesApiTest extends BaseApiTest {
 
-    private LaunchesApiUtils api;
+    private LaunchesApiSteps api;
 
     @BeforeClass
     public void initApi() {
-        api = new LaunchesApiUtils(request(), PROJECT_NAME);
+        api = new LaunchesApiSteps(request(), PROJECT_NAME);
     }
 
     @Test(description = "Получение списка запусков")

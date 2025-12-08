@@ -1,9 +1,15 @@
-<suite name="ParallelSuite" parallel="tests" thread-count="3">
-    <test name="UITests">
+<suite name="Suite" parallel="false">
+
+    <test name="UI Tests">
         <classes>
             <class name="framework.tests.ui.LaunchesTests"/>
-            <class name="framework.tests.ui.LoginTests"/>
+        </classes>
+    </test>
+
+    <test name="API Tests">
+        <classes>
             <class name="framework.tests.api.LaunchesApiTest"/>
         </classes>
     </test>
+
 </suite>

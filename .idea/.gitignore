@@ -1,10 +1,47 @@
-# Default ignored files
-/shelf/
+# -------------------------------
+# IntelliJ IDEA
+# -------------------------------
+/.shelf/
 /workspace.xml
-# Editor-based HTTP Client requests
 /httpRequests/
-# Datasource local storage ignored files
 /dataSources/
 /dataSources.local.xml
-# Zeppelin ignored files
 /ZeppelinRemoteNotebooks/
+
+# -------------------------------
+# Maven / Java
+# -------------------------------
+
+/target/
+
+
+# -------------------------------
+# Logs
+# -------------------------------
+*.log
+
+# -------------------------------
+# OS generated files
+# -------------------------------
+.DS_Store
+Thumbs.db
+
+# -------------------------------
+# Java
+# -------------------------------
+*.class
+*.jar
+*.war
+*.ear
+
+# -------------------------------
+# Allure
+# -------------------------------
+/allure-results/
+/allure-report/
+
+# -------------------------------
+# Environment / Secrets
+# -------------------------------
+*.env
+.env*
