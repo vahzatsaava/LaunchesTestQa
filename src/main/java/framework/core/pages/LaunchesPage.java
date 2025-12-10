@@ -1,8 +1,12 @@
 package framework.core.pages;
 import framework.core.base_entities.BasePage;
+import framework.core.utils.Waits;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.time.Duration;
 import java.util.List;
 
 public class LaunchesPage extends BasePage{
@@ -11,12 +15,9 @@ public class LaunchesPage extends BasePage{
     private final By addFilterBtn = By.xpath("//button[contains(.,'Add filter')]");
     private final By filterInput = By.xpath("//input[@placeholder='Enter name']");
     private final By firstRowNameLink = By.xpath(".//a[contains(@class,'name')]");
-
-    // Лоадер (когда таблица обновляется)
     private final By loaderMask = By.cssSelector("[class*='spinningSquare'], [class*='spinner']");
 
-
-    /** Ожидаем загрузку таблицы */
+    /** Ждём появление таблицы */
     public void waitForLaunchTable() {
         Waits.presenceOfAll(launchRows);
     }
@@ -26,37 +27,24 @@ public class LaunchesPage extends BasePage{
         return Waits.presenceOfAll(launchRows).size();
     }
 
-    /**
-     * Ожидаем обновления таблицы ПО СРАВНЕНИЮ ПЕРВОЙ СТРОКИ.
-     * Это 100% стабильно для React-приложений.
-     */
-    public void waitForLaunchTableUpdated(int oldCount) {
-        String oldFirstRow = getFirstRowText();
-
-        clickRefresh();
-
+    /** Лучший вариант для свежего DOM RP */
+    public void waitForLaunchTableUpdated() {
         waitForLoader();
-        new org.openqa.selenium.support.ui.WebDriverWait(driver, java.time.Duration.ofSeconds(10))
-                .until(d -> {
-                    String newRow = getFirstRowText();
-                    return !newRow.equals(oldFirstRow);
-                });
+        waitForLaunchTable();
     }
 
-    /** Получаем текст первой строки таблицы */
-    private String getFirstRowText() {
-        List<WebElement> rows = Waits.presenceOfAll(launchRows);
-        if (rows.isEmpty()) return "";
-        return rows.get(0).getText();
-    }
-
-    /** Ждём исчезновения лоадера */
+    /** Универсальная обработка loader */
     private void waitForLoader() {
+        WebDriverWait waitShort = new WebDriverWait(driver, Duration.ofSeconds(3));
+        WebDriverWait waitLong = new WebDriverWait(driver, Duration.ofSeconds(10));
+
         try {
-            Waits.presenceOfAll(loaderMask);
-            Waits.invisible(loaderMask);
-        } catch (Exception ignored) {
-        }
+            waitShort.until(ExpectedConditions.presenceOfAllElementsLocatedBy(loaderMask));
+        } catch (Exception ignored) {}
+
+        try {
+            waitLong.until(ExpectedConditions.invisibilityOfElementLocated(loaderMask));
+        } catch (Exception ignored){}
     }
 
     public void clickAddFilter() {

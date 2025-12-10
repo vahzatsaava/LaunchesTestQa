@@ -1,4 +1,4 @@
-package framework.core.pages;
+package framework.core.utils;
 
 import framework.core.driver.DriverManager;
 import org.openqa.selenium.By;
@@ -11,9 +11,7 @@ import java.time.Duration;
 import java.util.List;
 
 public class Waits {
-    private Waits(){
-
-    }
+    private Waits() {}
 
     private static WebDriver driver() {
         return DriverManager.getDriver();
@@ -31,16 +29,15 @@ public class Waits {
         return webDriverWait().until(ExpectedConditions.elementToBeClickable(locator));
     }
 
+    public static WebElement clickable(WebElement element) {
+        return webDriverWait().until(ExpectedConditions.elementToBeClickable(element));
+    }
+
     public static List<WebElement> presenceOfAll(By locator) {
         return webDriverWait().until(ExpectedConditions.presenceOfAllElementsLocatedBy(locator));
     }
 
     public static Boolean invisible(By locator) {
         return webDriverWait().until(ExpectedConditions.invisibilityOfElementLocated(locator));
-    }
-
-    public static void urlContains(String fragment) {
-        webDriverWait().until(ExpectedConditions.urlContains(fragment));
-    }
-}
+    }}
 

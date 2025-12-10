@@ -23,8 +23,6 @@ d
 4src/main/java/framework/core/pages/LaunchesPage.java,7\3\730bb6303f3fd0471088a96e6b5bc5ac12e2a62b
 a
 1src/main/java/framework/core/pages/LoginPage.java,d\2\d2b192d513543650a0f79e89649fba584f654c33
-g
-7src/test/java/framework/tests/api/LaunchesApiUtils.java,c\a\ca70f068f130b1e78de422dd2b115e35468195bb
 b
 2src/main/java/framework/core/model/enums/Mode.java,4\7\47fda786a0e3a3d66359d2ec2362e33bf9cb377c
 m
@@ -39,8 +37,6 @@ a
 1src/main/java/framework/core/model/LaunchDto.java,4\e\4ec02df60ab8f7c7e42d9844828b53868f7b1ca7
 f
 6src/main/java/framework/core/model/LaunchResponse.java,6\c\6c371e9bf61ae22bb266ee828dc233e42374d56b
-`
-0src/test/java/framework/tests/ui/LoginUtils.java,d\a\da676f59b8ae23d590a3bcdcb549effb89e29bad
 \
 ,src/main/java/framework/core/logger/Log.java,6\0\60fbd1212e2098013a3b0a54b662eb12b592180c
 h
@@ -50,4 +46,12 @@ k
 h
 8src/main/java/framework/core/base_entities/BasePage.java,d\d\dddfde8e0c15556a00692b00e99d9f30ac0ea8a9
 ]
--src/main/java/framework/core/utils/Waits.java,3\3\33e29571907bd29654d555bf4ff5c1e94ab2c069
+-.idea/sonarlint/securityhotspotstore/index.pb,8\8\88a9255124c95bdc913197c120a8d560edc59c8e
+]
+-src/main/java/framework/core/pages/Waits.java,d\b\dbcc5c767bf96724bd054b53612799038b695328
+h
+8src/main/java/framework/core/steps/LaunchesApiSteps.java,8\5\85918b4a332fd1f0286a310a3eddba3a465a0e23
+S
+#.idea/sonarlint/issuestore/index.pb,9\f\9fe84ebb15faf917b7def6236dba604453cc61e0
+b
+2src/main/java/framework/core/steps/LoginSteps.java,6\d\6d92c526ca0f0a6d359ff99eac307ad82ec7abcd

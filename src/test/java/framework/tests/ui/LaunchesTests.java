@@ -44,7 +44,7 @@ public class LaunchesTests extends BaseTest {
         int before = launchesPage.getLaunchesCount();
 
         launchesPage.clickRefresh();
-        launchesPage.waitForLaunchTableUpdated(before);
+        launchesPage.waitForLaunchTableUpdated();
 
         int after = launchesPage.getLaunchesCount();
 
@@ -56,7 +56,7 @@ public class LaunchesTests extends BaseTest {
     @Severity(SeverityLevel.NORMAL)
     public void testAddFilterWorks() {
 
-        LoginSteps.login();
+         LoginSteps.login();
 
         LaunchesPage launchesPage = new LaunchesPage();
         launchesPage.open(URL_LAUNCHES);

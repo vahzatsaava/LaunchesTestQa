@@ -1,7 +1,7 @@
 package framework.core.base_entities;
 
 import framework.core.driver.DriverManager;
-import framework.core.pages.Waits;
+import framework.core.utils.Waits;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -22,7 +22,7 @@ public class BasePage {
     }
 
     protected void click(WebElement element) {
-        WebElement el = Waits.clickable((By) element);
+        WebElement el = Waits.clickable(element);
         el.click();
     }
 
