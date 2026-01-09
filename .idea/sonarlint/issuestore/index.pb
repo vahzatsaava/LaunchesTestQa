@@ -51,7 +51,9 @@ S
 #.idea/sonarlint/issuestore/index.pb,9\f\9fe84ebb15faf917b7def6236dba604453cc61e0
 h
 8src/main/java/framework/core/steps/LaunchesApiSteps.java,8\5\85918b4a332fd1f0286a310a3eddba3a465a0e23
-]
--src/main/java/framework/core/pages/Waits.java,d\b\dbcc5c767bf96724bd054b53612799038b695328
 b
 2src/main/java/framework/core/steps/LoginSteps.java,6\d\6d92c526ca0f0a6d359ff99eac307ad82ec7abcd
+]
+-src/main/java/framework/core/utils/Waits.java,3\3\33e29571907bd29654d555bf4ff5c1e94ab2c069
+K
+.github/workflows/ci-cd.yml,e\5\e5ad8aa736aca9e40cb68718f70dc7fa78c1597a

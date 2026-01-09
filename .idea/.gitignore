@@ -13,6 +13,7 @@
 # -------------------------------
 
 /target/
+/src/test/resources/application.local.yaml
 
 
 # -------------------------------
