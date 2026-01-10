@@ -14,6 +14,7 @@ import java.util.List;
 
 @Epic("API Tests")
 @Feature("Launches API")
+@Test(groups = "API")
 public class LaunchesApiTest extends BaseApiTest {
 
     private LaunchesApiSteps api;
