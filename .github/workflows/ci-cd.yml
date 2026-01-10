@@ -37,5 +37,9 @@ jobs:
             launches: https://demo.reportportal.io/ui/#default_personal/launches/all
           EOF
 
-      - name: Run tests
-        run: mvn -B test
+      - name: Run API Tests
+        run: mvn -B test -DsuiteXmlFile=src/test/resources/testng-api.xml
+
+      - name: Run UI Tests
+        run: mvn -B test -DsuiteXmlFile=src/test/resources/testng-ui.xml
+
