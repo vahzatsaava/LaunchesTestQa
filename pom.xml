@@ -57,7 +57,6 @@
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
             <version>7.10.2</version>
-            <scope>test</scope>
         </dependency>
 
         <!-- Allure TestNG -->
@@ -65,7 +64,6 @@
             <groupId>io.qameta.allure</groupId>
             <artifactId>allure-testng</artifactId>
             <version>2.27.0</version>
-            <scope>test</scope>
         </dependency>
 
         <!-- SLF4J + Logback -->
