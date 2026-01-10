@@ -10,7 +10,7 @@ import io.qameta.allure.*;
 
 @Epic("UI Tests")
 @Feature("Launches Page")
-@Test
+@Test(groups = "UI")
 public class LaunchesTests extends BaseTest {
     private static final String URL_LAUNCHES = ConfigLoader.get().getUrl().getLaunches();
 
