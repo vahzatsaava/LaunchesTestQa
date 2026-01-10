@@ -47,9 +47,6 @@ public class LaunchesPage extends BasePage{
         } catch (Exception ignored){}
     }
 
-    public void clickAddFilter() {
-        click(addFilterBtn);
-    }
 
     public void enterFilterText(String text) {
         type(filterInput, text);

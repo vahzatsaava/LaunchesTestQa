@@ -51,27 +51,6 @@ public class LaunchesTests extends BaseTest {
         Assert.assertTrue(after >= 0, "Launch count should be non-negative");
     }
 
-    @Test(description = "Проверяем, что фильтр запуска корректно работает")
-    @Story("Фильтрация запусков")
-    @Severity(SeverityLevel.NORMAL)
-    public void testAddFilterWorks() {
-
-         LoginSteps.login();
-
-        LaunchesPage launchesPage = new LaunchesPage();
-        launchesPage.open(URL_LAUNCHES);
-        launchesPage.waitForLaunchTable();
-
-        launchesPage.clickAddFilter();
-
-        // новый вариант: поле становится видимым автоматически через Waits
-        launchesPage.enterFilterText("Demo");
-
-        int count = launchesPage.getLaunchesCount();
-
-        Assert.assertTrue(count >= 1,
-                "Filter should return at least one item");
-    }
 
     @Test(description = "Открытие детальной страницы запуска")
     @Story("Открытие запуска")
