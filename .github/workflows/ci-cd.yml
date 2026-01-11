@@ -58,16 +58,21 @@ jobs:
           echo "Files count:"
           find target/allure-results -type f | wc -l || true
 
-      - name: Prepare public folder (Allure Maven)
+      - name: Prepare public folder (Allure)
         if: always()
         run: |
           rm -rf public
           mkdir -p public
 
-          # публикуем ВСЁ из target/site (там лежит allure-maven.html и статика)
-          cp -R target/site/* public/
+          echo "=== target/site ==="
+          ls -la target/site || true
+          echo "=== target/site/allure-maven-plugin ==="
+          ls -la target/site/allure-maven-plugin || true
 
-          # делаем правильный index.html для GitHub Pages
+          # Копируем СОДЕРЖИМОЕ папки отчёта в корень public
+          cp -R target/site/allure-maven-plugin/* public/
+
+          # Если Allure Maven создаёт allure-maven.html — делаем index.html
           if [ -f public/allure-maven.html ]; then
             mv public/allure-maven.html public/index.html
           fi
@@ -75,8 +80,11 @@ jobs:
           echo "=== Public root ==="
           ls -la public
 
+          # GitHub Pages требует index.html в корне
           if [ ! -f public/index.html ]; then
-            echo "ERROR: index.html not found"
+            echo "ERROR: public/index.html not found"
+            echo "HTML files in public:"
+            find public -maxdepth 2 -type f -name "*.html" -print || true
             exit 1
           fi
 
