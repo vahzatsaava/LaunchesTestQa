@@ -63,8 +63,11 @@ jobs:
         run: |
           rm -rf public
           mkdir -p public
+
+          # публикуем ВСЁ из target/site (там лежит allure-maven.html и статика)
           cp -R target/site/* public/
 
+          # делаем правильный index.html для GitHub Pages
           if [ -f public/allure-maven.html ]; then
             mv public/allure-maven.html public/index.html
           fi
@@ -83,4 +86,3 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: public
-
