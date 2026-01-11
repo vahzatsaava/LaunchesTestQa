@@ -1,10 +1,13 @@
-name: CI
+name: CI + Allure
 
 on:
   push:
     branches: ["main"]
   pull_request:
     branches: ["main"]
+
+permissions:
+  contents: write
 
 jobs:
   build-and-test:
@@ -43,3 +46,20 @@ jobs:
       - name: Run UI Tests
         run: mvn -B test -DsuiteXmlFile=src/test/resources/testng-ui.xml
 
+      - name: Generate Allure Report
+        if: always()
+        run: mvn -B allure:report
+
+      - name: Upload Allure results (artifact)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: allure-results
+          path: target/allure-results
+
+      - name: Deploy Allure report to GitHub Pages
+        if: github.ref == 'refs/heads/main'
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: target/site/allure-maven-plugin
