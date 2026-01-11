@@ -57,9 +57,29 @@ jobs:
           name: allure-results
           path: target/allure-results
 
+      - name: Prepare public folder (fix index.html)
+        if: always()
+        run: |
+          rm -rf public
+          mkdir -p public
+
+          cp -R target/site/allure-maven-plugin/* public/
+
+          if [ -f public/allure-maven.html ]; then
+            mv public/allure-maven.html public/index.html
+          fi
+
+          echo "=== Public folder ==="
+          ls -la public
+
+          if [ ! -f public/index.html ]; then
+            echo "ERROR: index.html not found"
+            exit 1
+          fi
+
       - name: Deploy Allure report to GitHub Pages
         if: always() && github.ref == 'refs/heads/main'
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: target/site/allure-maven-plugin
+          publish_dir: public
