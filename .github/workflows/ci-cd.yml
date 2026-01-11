@@ -50,26 +50,26 @@ jobs:
         if: always()
         run: mvn -B allure:report
 
-      - name: Upload Allure results (artifact)
+      - name: Debug allure-results
         if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: allure-results
-          path: target/allure-results
+        run: |
+          echo "=== target/allure-results ==="
+          ls -la target/allure-results || true
+          echo "Files count:"
+          find target/allure-results -type f | wc -l || true
 
-      - name: Prepare public folder (fix index.html)
+      - name: Prepare public folder (Allure Maven)
         if: always()
         run: |
           rm -rf public
           mkdir -p public
-
-          cp -R target/site/allure-maven-plugin/* public/
+          cp -R target/site/* public/
 
           if [ -f public/allure-maven.html ]; then
             mv public/allure-maven.html public/index.html
           fi
 
-          echo "=== Public folder ==="
+          echo "=== Public root ==="
           ls -la public
 
           if [ ! -f public/index.html ]; then
@@ -83,3 +83,4 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: public
+
