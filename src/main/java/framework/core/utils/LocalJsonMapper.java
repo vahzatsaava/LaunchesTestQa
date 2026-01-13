@@ -6,7 +6,9 @@ import com.fasterxml.jackson.databind.SerializationFeature;
 
 public class LocalJsonMapper {
 
-    private LocalJsonMapper() {}
+    private LocalJsonMapper() {
+
+    }
 
     private static final ObjectMapper mapper = new ObjectMapper()
             .findAndRegisterModules()
