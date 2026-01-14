@@ -1,9 +1,0 @@
-api:
-  key: UserUserUserUserUserUserUserUserUserUser_1ICyVunaS8OEcibd_Gph8C7PQNbDF9_nZE_UXK0BBG-HMkG9By8bjZchvDOjiCeB
-
-base:
-  url: https://demo.reportportal.io/api/v1
-  projectName: default_personal
-
-url:
-  launches: https://demo.reportportal.io/ui/#default_personal/launches/all
