@@ -55,11 +55,30 @@ jobs:
           ls -la target/site || true
           echo "=== target/site/allure-maven-plugin ==="
           ls -la target/site/allure-maven-plugin || true
-          test -f target/site/allure-maven-plugin/index.html
+          # У тебя генерится allure-maven.html, а не index.html
+          test -f target/site/allure-maven-plugin/allure-maven.html
+
+      - name: Prepare publish dir (Allure)
+        if: always()
+        run: |
+          rm -rf public
+          mkdir -p public
+
+          cp -R target/site/allure-maven-plugin/* public/
+
+          # GitHub Pages требует index.html в корне
+          if [ -f public/allure-maven.html ]; then
+            mv public/allure-maven.html public/index.html
+          fi
+
+          echo "=== public ==="
+          ls -la public
+
+          test -f public/index.html
 
       - name: Deploy Allure report to GitHub Pages
         if: always() && github.ref == 'refs/heads/main'
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: target/site/allure-maven-plugin
+          publish_dir: public
