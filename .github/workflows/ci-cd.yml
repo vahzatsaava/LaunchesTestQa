@@ -40,53 +40,41 @@ jobs:
             launches: https://demo.reportportal.io/ui/#default_personal/launches/all
           EOF
 
-      - name: Run API Tests
-        run: mvn -B test -DsuiteXmlFile=src/test/resources/testng-api.xml
-
-      - name: Run UI Tests
-        run: mvn -B test -DsuiteXmlFile=src/test/resources/testng-ui.xml
+      - name: Run API + UI tests
+        run: |
+          mvn -B test -Dsurefire.suiteXmlFiles=src/test/resources/testng-api.xml,src/test/resources/testng-ui.xml
 
       - name: Generate Allure Report
         if: always()
         run: mvn -B allure:report
 
-      - name: Debug allure-results
+      - name: Debug target/site/allure-maven-plugin
         if: always()
         run: |
-          echo "=== target/allure-results ==="
-          ls -la target/allure-results || true
-          echo "Files count:"
-          find target/allure-results -type f | wc -l || true
+          echo "=== target/site ==="
+          ls -la target/site || true
+          echo "=== target/site/allure-maven-plugin ==="
+          ls -la target/site/allure-maven-plugin || true
+          # У тебя генерится allure-maven.html, а не index.html
+          test -f target/site/allure-maven-plugin/allure-maven.html
 
-      - name: Prepare public folder (Allure)
+      - name: Prepare publish dir (Allure)
         if: always()
         run: |
           rm -rf public
           mkdir -p public
 
-          echo "=== target/site ==="
-          ls -la target/site || true
-          echo "=== target/site/allure-maven-plugin ==="
-          ls -la target/site/allure-maven-plugin || true
-
-          # Копируем СОДЕРЖИМОЕ папки отчёта в корень public
           cp -R target/site/allure-maven-plugin/* public/
 
-          # Если Allure Maven создаёт allure-maven.html — делаем index.html
+          # GitHub Pages требует index.html в корне
           if [ -f public/allure-maven.html ]; then
             mv public/allure-maven.html public/index.html
           fi
 
-          echo "=== Public root ==="
+          echo "=== public ==="
           ls -la public
 
-          # GitHub Pages требует index.html в корне
-          if [ ! -f public/index.html ]; then
-            echo "ERROR: public/index.html not found"
-            echo "HTML files in public:"
-            find public -maxdepth 2 -type f -name "*.html" -print || true
-            exit 1
-          fi
+          test -f public/index.html
 
       - name: Deploy Allure report to GitHub Pages
         if: always() && github.ref == 'refs/heads/main'
