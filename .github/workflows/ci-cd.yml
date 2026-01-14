@@ -44,36 +44,32 @@ jobs:
         run: |
           mvn -B test -Dsurefire.suiteXmlFiles=src/test/resources/testng-api.xml,src/test/resources/testng-ui.xml
 
-      - name: Generate Allure Report
-        if: always()
-        run: mvn -B allure:report
-
-      - name: Debug target/site/allure-maven-plugin
+      - name: Debug allure-results
         if: always()
         run: |
-          echo "=== target/site ==="
-          ls -la target/site || true
-          echo "=== target/site/allure-maven-plugin ==="
-          ls -la target/site/allure-maven-plugin || true
-          # У тебя генерится allure-maven.html, а не index.html
-          test -f target/site/allure-maven-plugin/allure-maven.html
+          echo "=== target/allure-results ==="
+          ls -la target/allure-results || true
+          echo "Files count:"
+          find target/allure-results -type f | wc -l || true
 
-      - name: Prepare publish dir (Allure)
+      # Генерим настоящий HTML Allure-отчёт (index.html + assets)
+      - name: Generate Allure report (CLI)
         if: always()
         run: |
           rm -rf public
           mkdir -p public
 
-          cp -R target/site/allure-maven-plugin/* public/
+          # Скачиваем Allure Commandline
+          ALLURE_VERSION=2.27.0
+          curl -Ls -o allure.tgz https://github.com/allure-framework/allure2/releases/download/${ALLURE_VERSION}/allure-${ALLURE_VERSION}.tgz
+          tar -xzf allure.tgz
+          ./allure-${ALLURE_VERSION}/bin/allure --version
 
-          # GitHub Pages требует index.html в корне
-          if [ -f public/allure-maven.html ]; then
-            mv public/allure-maven.html public/index.html
-          fi
+          # Генерим отчёт
+          ./allure-${ALLURE_VERSION}/bin/allure generate target/allure-results -o public --clean
 
           echo "=== public ==="
           ls -la public
-
           test -f public/index.html
 
       - name: Deploy Allure report to GitHub Pages
@@ -82,3 +78,5 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: public
+          publish_branch: gh-pages
+          force_orphan: true
