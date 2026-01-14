@@ -48,24 +48,34 @@ jobs:
         if: always()
         run: |
           echo "=== target/allure-results ==="
+          ls -la target || true
           ls -la target/allure-results || true
           echo "Files count:"
-          find target/allure-results -type f | wc -l || true
+          find target/allure-results -type f 2>/dev/null | wc -l || true
 
-      # Генерим настоящий HTML Allure-отчёт (index.html + assets)
       - name: Generate Allure report (CLI)
         if: always()
         run: |
           rm -rf public
           mkdir -p public
 
-          # Скачиваем Allure Commandline
+          # если результатов нет — не валим job, но покажем причину
+          if [ ! -d target/allure-results ]; then
+            echo "No target/allure-results directory. Allure report can't be generated."
+            # чтобы Pages не был пустым — положим простую страницу
+            cat > public/index.html << 'EOF'
+          <html><body>
+          <h2>Allure report was not generated</h2>
+          <p>Reason: target/allure-results folder is missing.</p>
+          </body></html>
+          EOF
+            exit 0
+          fi
+
           ALLURE_VERSION=2.27.0
           curl -Ls -o allure.tgz https://github.com/allure-framework/allure2/releases/download/${ALLURE_VERSION}/allure-${ALLURE_VERSION}.tgz
           tar -xzf allure.tgz
-          ./allure-${ALLURE_VERSION}/bin/allure --version
 
-          # Генерим отчёт
           ./allure-${ALLURE_VERSION}/bin/allure generate target/allure-results -o public --clean
 
           echo "=== public ==="
