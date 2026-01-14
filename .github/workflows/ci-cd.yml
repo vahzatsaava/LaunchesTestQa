@@ -44,13 +44,15 @@ jobs:
         run: |
           mvn -B test -Dsurefire.suiteXmlFiles=src/test/resources/testng-api.xml,src/test/resources/testng-ui.xml
 
-      - name: Debug allure-results
+      - name: Debug target/site/allure-maven-plugin
         if: always()
         run: |
-          echo "=== target/allure-results ==="
-          ls -la target/allure-results || true
-          echo "Files count:"
-          find target/allure-results -type f | wc -l || true
+          echo "=== target/site ==="
+          ls -la target/site || true
+          echo "=== target/site/allure-maven-plugin ==="
+          ls -la target/site/allure-maven-plugin || true
+          # У тебя генерится allure-maven.html, а не index.html
+          test -f target/site/allure-maven-plugin/allure-maven.html
 
       # Генерим настоящий HTML Allure-отчёт (index.html + assets)
       - name: Generate Allure report (CLI)
