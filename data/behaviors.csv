@@ -1,0 +1,5 @@
+"Epic","Feature","Story","FAILED","BROKEN","PASSED","SKIPPED","UNKNOWN"
+"API Tests","Launches API","","0","0","6","0","0"
+"UI Tests","Launches Page","Просмотр списка запусков","0","0","1","0","0"
+"UI Tests","Launches Page","Открытие запуска","0","0","1","0","0"
+"UI Tests","Launches Page","Обновление списка запусков","0","0","1","0","0"
